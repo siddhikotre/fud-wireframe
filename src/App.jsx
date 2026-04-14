@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import OnboardingModal from './components/OnboardingModal';
+import ScrollToTop from './components/ScrollToTop';
 import Dashboard from './pages/Dashboard';
 import Events from './pages/Events';
 import EventDetail from './pages/EventDetail';
@@ -10,6 +11,7 @@ import './App.css';
 function App() {
   return (
     <div className="app">
+      <ScrollToTop />
       <Navbar />
       <main className="app-content">
         <Routes>
