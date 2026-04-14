@@ -562,7 +562,7 @@
 }
 
 .dash-event-card {
-  min-width: 300px;
+  min-width: 82vw;
   scroll-snap-align: start;
   flex-shrink: 0;
   background: var(--bg-card);
@@ -576,6 +576,7 @@
   position: relative;
 }
 
+@media (min-width: 480px) { .dash-event-card { min-width: 300px; } }
 @media (min-width: 768px) { .dash-event-card { min-width: auto; } }
 
 .dash-event-card:hover {
@@ -987,7 +988,8 @@
 .featured-scroll::-webkit-scrollbar { display: none; }
 
 .featured-card {
-  min-width: 340px;
+  min-width: 82vw;
+  max-width: 380px;
   flex-shrink: 0;
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -997,6 +999,7 @@
   position: relative;
 }
 
+@media (min-width: 480px) { .featured-card { min-width: 340px; } }
 @media (min-width: 768px) { .featured-card { min-width: 380px; } }
 
 .featured-card:hover {
@@ -1057,17 +1060,27 @@
 
 .featured-title {
   font-family: var(--font-display);
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 700;
   color: var(--text-primary);
   line-height: 1.3;
   letter-spacing: -0.02em;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .featured-desc {
   font-size: 14px;
   color: var(--text-muted);
   line-height: 1.55;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .featured-meta {
