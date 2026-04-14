@@ -1980,7 +1980,7 @@
   border-radius: 50%;
 }
 
-.wallet-section .section-title { margin-bottom: 0; }
+.wallet-section .section-title { margin-bottom: 16px; }
 
 /* Package grid */
 .pkg-grid {
