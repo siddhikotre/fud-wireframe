@@ -1,9 +1,10 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Search, Coins, Clock, Users, Bot, Megaphone,
   DollarSign, Scale, Landmark, Sparkles,
-  SlidersHorizontal, X, Video, MapPin
+  SlidersHorizontal, X, Video, MapPin,
+  ChevronLeft, ChevronRight
 } from 'lucide-react';
 import { useUser } from '../context/UserContext';
 import { events, categories } from '../data/mockData';
@@ -28,9 +29,24 @@ const formatFilters = [
   { key: 'in-person', label: 'In-person', icon: MapPin },
 ];
 
+function ScrollNav({ scrollRef }) {
+  const scroll = (dir) => {
+    if (!scrollRef.current) return;
+    const amount = Math.max(scrollRef.current.clientWidth * 0.82, 260);
+    scrollRef.current.scrollBy({ left: dir * amount, behavior: 'smooth' });
+  };
+  return (
+    <div className="scroll-nav">
+      <button onClick={() => scroll(-1)} aria-label="Previous"><ChevronLeft size={16} strokeWidth={2.2} /></button>
+      <button onClick={() => scroll(1)} aria-label="Next"><ChevronRight size={16} strokeWidth={2.2} /></button>
+    </div>
+  );
+}
+
 export default function Events() {
   const { registeredEvents } = useUser();
   const [search, setSearch] = useState('');
+  const featuredRef = useRef(null);
   const [activeCategory, setActiveCategory] = useState('All');
   const [activeType, setActiveType] = useState('all');
   const [activeFormat, setActiveFormat] = useState('all');
@@ -154,11 +170,14 @@ export default function Events() {
       {!hasFilters && featuredEvents.length > 0 && (
         <section className="featured-section animate-in" style={{ animationDelay: '180ms' }}>
           <div className="section-header">
-            <h2 className="section-title">
-              <Sparkles size={18} /> Featured
-            </h2>
+            <div className="section-title-group">
+              <h2 className="section-title">
+                <Sparkles size={18} /> Featured
+              </h2>
+            </div>
+            <ScrollNav scrollRef={featuredRef} />
           </div>
-          <div className="featured-scroll">
+          <div className="featured-scroll" ref={featuredRef}>
             {featuredEvents.map(event => {
               const cat = categoryConfig[event.category] || categoryConfig['AI Tools'];
               const CatIcon = cat.icon;
@@ -181,14 +200,12 @@ export default function Events() {
                       </div>
                     </div>
                     <h3 className="featured-title">{event.title}</h3>
-                    <p className="featured-desc">{event.description.slice(0, 100)}...</p>
                     <div className="featured-meta">
-                      <span><Clock size={14} /> {new Date(event.date).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })} &middot; {event.time}</span>
+                      <span><Clock size={14} /> {new Date(event.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
                       <span className={`format-tag ${event.format}`}>
                         {event.format === 'virtual' ? <Video size={12} /> : <MapPin size={12} />}
                         {event.format === 'virtual' ? 'Virtual' : event.location}
                       </span>
-                      <span><Users size={14} /> {event.attendees}/{event.maxAttendees}</span>
                     </div>
                     <div className="featured-footer">
                       <div className="host-info">

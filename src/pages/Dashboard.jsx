@@ -4,7 +4,7 @@ import {
   Coins, ArrowRight, Clock, Users,
   Building2, Bot, Megaphone,
   DollarSign, Scale, Landmark, Star,
-  CheckCircle2, Gift, UserPlus, Trophy, ChevronRight,
+  CheckCircle2, Gift, UserPlus, Trophy, ChevronRight, ChevronLeft,
   Video, MapPin, Sparkles
 } from 'lucide-react';
 import { useUser } from '../context/UserContext';
@@ -24,6 +24,20 @@ function getActivityIcon(description) {
   if (description.includes('profile'))  return { icon: UserPlus };
   if (description.includes('Tipped'))   return { icon: Trophy };
   return { icon: Star };
+}
+
+function ScrollNav({ scrollRef }) {
+  const scroll = (dir) => {
+    if (!scrollRef.current) return;
+    const amount = Math.max(scrollRef.current.clientWidth * 0.82, 260);
+    scrollRef.current.scrollBy({ left: dir * amount, behavior: 'smooth' });
+  };
+  return (
+    <div className="scroll-nav">
+      <button onClick={() => scroll(-1)} aria-label="Previous"><ChevronLeft size={16} strokeWidth={2.2} /></button>
+      <button onClick={() => scroll(1)} aria-label="Next"><ChevronRight size={16} strokeWidth={2.2} /></button>
+    </div>
+  );
 }
 
 function AnimatedNumber({ value, duration = 1200 }) {
@@ -92,6 +106,7 @@ function CoinRing({ value, max = 500, size = 110 }) {
 
 export default function Dashboard() {
   const { user, transactions, isProfileComplete, openOnboarding } = useUser();
+  const eventsScrollRef = useRef(null);
 
   const upcomingEvents = events
     .filter(e => new Date(e.date) >= new Date('2026-04-14'))
@@ -168,9 +183,12 @@ export default function Dashboard() {
             <span className="section-num">No. 01</span>
             <h2 className="section-title">Upcoming events</h2>
           </div>
-          <Link to="/events" className="see-all">See all <ArrowRight size={14} /></Link>
+          <div className="section-actions">
+            <ScrollNav scrollRef={eventsScrollRef} />
+            <Link to="/events" className="see-all">See all <ArrowRight size={14} /></Link>
+          </div>
         </div>
-        <div className="events-scroll">
+        <div className="events-scroll" ref={eventsScrollRef}>
           {displayEvents.map(event => {
             const cat = categoryConfig[event.category] || categoryConfig['AI Tools'];
             const CatIcon = cat.icon;

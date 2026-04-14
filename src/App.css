@@ -250,6 +250,47 @@
 
 .see-all:hover { gap: 9px; }
 
+/* Section actions: scroll nav + see all */
+.section-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Prev/next scroll buttons (mobile horizontal scrollers) */
+.scroll-nav {
+  display: flex;
+  gap: 6px;
+}
+
+@media (min-width: 768px) {
+  .scroll-nav { display: none; }
+}
+
+.scroll-nav button {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  transition: all 0.15s var(--ease-smooth);
+  cursor: pointer;
+}
+
+.scroll-nav button:hover {
+  border-color: var(--text-primary);
+  color: var(--text-primary);
+  transform: scale(1.05);
+}
+
+.scroll-nav button:active {
+  transform: scale(0.95);
+}
+
 /* =============================================
    Dashboard
    ============================================= */
@@ -547,7 +588,8 @@
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
-  padding-bottom: 4px;
+  padding: 8px 2px 12px;
+  margin: -8px -2px -12px;
   scrollbar-width: none;
 }
 
@@ -558,6 +600,8 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     overflow: visible;
+    padding: 0;
+    margin: 0;
   }
 }
 
@@ -982,14 +1026,15 @@
   overflow-x: auto;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
-  padding-bottom: 4px;
+  padding: 8px 2px 12px;
+  margin: -8px -2px -12px;
 }
 
 .featured-scroll::-webkit-scrollbar { display: none; }
 
 .featured-card {
-  min-width: 82vw;
-  max-width: 380px;
+  min-width: 78vw;
+  max-width: 340px;
   flex-shrink: 0;
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -999,8 +1044,8 @@
   position: relative;
 }
 
-@media (min-width: 480px) { .featured-card { min-width: 340px; } }
-@media (min-width: 768px) { .featured-card { min-width: 380px; } }
+@media (min-width: 480px) { .featured-card { min-width: 320px; } }
+@media (min-width: 768px) { .featured-card { min-width: 340px; max-width: 360px; } }
 
 .featured-card:hover {
   border-color: var(--border-strong);
@@ -1011,10 +1056,14 @@
 .featured-accent { display: none; }
 
 .featured-content {
-  padding: 24px;
+  padding: 18px 20px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
+}
+
+@media (min-width: 640px) {
+  .featured-content { padding: 22px; gap: 12px; }
 }
 
 .featured-top {
