@@ -110,8 +110,8 @@ export default function Events() {
 
       {/* Filters */}
       <div className="events-filters animate-in" style={{ animationDelay: '120ms' }}>
-        {/* Type + Format filter row */}
-        <div className="filter-row type-filters">
+        {/* Type filters */}
+        <div className="filter-row">
           {typeFilters.map(f => (
             <button
               key={f.key}
@@ -121,7 +121,10 @@ export default function Events() {
               {f.label}
             </button>
           ))}
-          <span className="filter-divider" aria-hidden="true" />
+        </div>
+
+        {/* Format filters */}
+        <div className="filter-row">
           {formatFilters.map(f => {
             const FIcon = f.icon;
             return (

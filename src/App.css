@@ -950,20 +950,15 @@
 
 .filter-row {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
-  overflow-x: auto;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
-  padding-bottom: 2px;
 }
-
-.filter-row::-webkit-scrollbar { display: none; }
 
 .filter-chip {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 8px 16px;
+  padding: 7px 14px;
   border-radius: var(--radius-full);
   font-size: 13px;
   font-weight: 600;
@@ -974,6 +969,12 @@
   transition: all 0.2s var(--ease-smooth);
   cursor: pointer;
   flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .filter-chip {
+    padding: 8px 16px;
+  }
 }
 
 .filter-chip:hover {
@@ -987,15 +988,7 @@
   border-color: var(--text-primary);
 }
 
-.filter-divider {
-  display: inline-block;
-  width: 1px;
-  height: 20px;
-  background: var(--border);
-  margin: 0 6px;
-  align-self: center;
-  flex-shrink: 0;
-}
+.filter-divider { display: none; }
 
 .clear-filters {
   display: inline-flex;
