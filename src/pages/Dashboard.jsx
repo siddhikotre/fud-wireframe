@@ -248,7 +248,7 @@ export default function Dashboard() {
             const ActIcon = act.icon;
             return (
               <div key={tx.id} className={`activity-item ${tx.type}`}>
-                <div className="activity-icon-box" style={{ background: act.bg, color: act.color }}>
+                <div className="activity-icon-box">
                   <ActIcon size={18} />
                 </div>
                 <div className="activity-info">

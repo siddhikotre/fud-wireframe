@@ -206,10 +206,10 @@
 
 .section-header {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
   margin-bottom: 20px;
-  gap: 16px;
+  gap: 12px;
   padding-bottom: 12px;
   border-bottom: 1px solid var(--border);
 }
@@ -218,6 +218,14 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.section-title-group .section-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .section-num {
@@ -246,6 +254,8 @@
   color: var(--text-primary);
   transition: gap 0.2s var(--ease-smooth);
   padding-bottom: 2px;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .see-all:hover { gap: 9px; }
@@ -255,6 +265,8 @@
   display: flex;
   align-items: center;
   gap: 12px;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 /* Prev/next scroll buttons (mobile horizontal scrollers) */

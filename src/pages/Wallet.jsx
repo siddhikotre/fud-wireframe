@@ -8,13 +8,13 @@ import { useUser } from '../context/UserContext';
 import { coinPackages } from '../data/mockData';
 
 function getActivityIcon(tx) {
-  if (tx.type === 'purchased') return { icon: ShoppingBag,  color: '#7C3AED', bg: '#F5F3FF' };
+  if (tx.type === 'purchased') return { icon: ShoppingBag };
   const d = tx.description;
-  if (d.includes('Attended')) return { icon: CheckCircle2, color: '#059669', bg: '#ECFDF5' };
-  if (d.includes('Welcome'))  return { icon: Gift,         color: '#6366F1', bg: '#EEF2FF' };
-  if (d.includes('profile'))  return { icon: UserPlus,     color: '#0284C7', bg: '#E0F2FE' };
-  if (d.includes('Tipped'))   return { icon: Trophy,       color: '#7C3AED', bg: '#F5F3FF' };
-  return { icon: Star, color: '#D97706', bg: '#FFFBEB' };
+  if (d.includes('Attended')) return { icon: CheckCircle2 };
+  if (d.includes('Welcome'))  return { icon: Gift };
+  if (d.includes('profile'))  return { icon: UserPlus };
+  if (d.includes('Tipped'))   return { icon: Trophy };
+  return { icon: Star };
 }
 
 /* ---- Stripe-simulated checkout ---- */
@@ -223,7 +223,7 @@ export default function Wallet() {
             const sign = tx.type === 'spent' ? '-' : '+';
             return (
               <div key={tx.id} className={`activity-item ${tx.type}`}>
-                <div className="activity-icon-box" style={{ background: act.bg, color: act.color }}>
+                <div className="activity-icon-box">
                   <ActIcon size={18} />
                 </div>
                 <div className="activity-info">
