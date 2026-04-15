@@ -8,10 +8,9 @@ export default function Navbar() {
   return (
     <>
       <header className="top-bar">
-        <div className="logo">
-          <div className="logo-mark">F</div>
-          <span className="logo-text">Fud</span>
-        </div>
+        <NavLink to="/" className="logo" aria-label="Fud home">
+          <img src="/fud-logo-white.png" alt="fud" className="logo-img" />
+        </NavLink>
 
         <nav className="desktop-nav">
           <NavLink to="/" end>Home</NavLink>

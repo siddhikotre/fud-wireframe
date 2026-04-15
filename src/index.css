@@ -22,10 +22,16 @@
   --border-hover:  #D4D4D4;
   --border-strong: #0A0A0A;
 
-  /* Semantic — monochrome only */
-  --primary:        var(--text-primary);
-  --primary-hover:  #262626;
-  --primary-subtle: var(--bg-elevated);
+  /* Brand — official fud purple */
+  --brand-purple:        #7A6FFA;
+  --brand-purple-hover:  #5D50E0;
+  --brand-purple-50:     #F2F0FF;
+  --brand-purple-100:    #E3DFFF;
+
+  /* Semantic */
+  --primary:        var(--brand-purple);
+  --primary-hover:  var(--brand-purple-hover);
+  --primary-subtle: var(--brand-purple-50);
   --danger:         #991B1B;
   --danger-bg:      #F5F5F5;
 
@@ -174,4 +180,4 @@ p { color: var(--text-secondary); font-size: 1rem; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--border-hover); border-radius: var(--radius-full); }
 
-::selection { background: var(--text-primary); color: var(--text-inverse); }
+::selection { background: var(--brand-purple); color: var(--text-inverse); }

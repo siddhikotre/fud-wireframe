@@ -1,10 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <defs>
-    <linearGradient id="coin" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#FBBF24"/>
-      <stop offset="100%" stop-color="#D97706"/>
-    </linearGradient>
-  </defs>
-  <rect x="2" y="2" width="28" height="28" rx="7" fill="url(#coin)"/>
-  <text x="16" y="23" text-anchor="middle" font-family="system-ui,sans-serif" font-weight="800" font-size="19" fill="#451A03">F</text>
+  <rect width="32" height="32" rx="7" fill="#FAFAFA"/>
+  <!-- lowercase f -->
+  <path d="M17 7 C14.5 7 13 8.5 13 11 L13 13 L11 13 L11 16 L13 16 L13 25 L16 25 L16 16 L18.5 16 L18.5 13 L16 13 L16 11.5 C16 10.5 16.5 10 17.5 10 L18.5 10 L18.5 7 Z" fill="#0A0A0A"/>
+  <!-- purple smile -->
+  <path d="M6 20 A 10 6 0 0 0 26 20 Z" fill="#7A6FFA"/>
 </svg>

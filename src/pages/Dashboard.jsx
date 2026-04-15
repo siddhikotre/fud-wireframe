@@ -135,10 +135,9 @@ export default function Dashboard() {
               </span>
             </div>
             <div className="bento-greeting-text">
-              <span className="greet-eyebrow">Welcome back</span>
+              <span className="greet-eyebrow">Welcome back, {user.name.split(' ')[0]}</span>
               <h1 className="greet-heading">
-                <span className="italic">{user.name.split(' ')[0]}</span>,
-                <br />let's take action today.
+                Let's take<br />action today.
               </h1>
             </div>
             {!isProfileComplete ? (
