@@ -95,7 +95,7 @@ export default function OnboardingModal() {
                 <span className="agent-pulse" />
               </div>
               <div className="ob-agent-meta">
-                <span className="ob-agent-name">FUD Agent</span>
+                <span className="ob-agent-name">Fud Agent</span>
                 <span className="ob-agent-status">Setting up 1-click apply</span>
               </div>
             </div>

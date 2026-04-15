@@ -201,7 +201,7 @@ export const events = [
 
 export const transactions = [
   { id: "t1", type: "earned", amount: 25, description: "Attended: Build Your Brand on Social Media", date: "2026-04-12", icon: "\u{1F4F1}" },
-  { id: "t2", type: "earned", amount: 50, description: "Welcome bonus \u2014 joined FUD!", date: "2026-04-10", icon: "\u{1F389}" },
+  { id: "t2", type: "earned", amount: 50, description: "Welcome bonus \u2014 joined Fud!", date: "2026-04-10", icon: "\u{1F389}" },
   { id: "t3", type: "earned", amount: 25, description: "Attended: Pricing Your Services for Profit", date: "2026-04-13", icon: "\u{1F3F7}\uFE0F" },
   { id: "t4", type: "earned", amount: 15, description: "Completed your profile", date: "2026-04-10", icon: "\u2705" },
   { id: "t5", type: "earned", amount: 10, description: "3-day login streak", date: "2026-04-13", icon: "\u{1F525}" },

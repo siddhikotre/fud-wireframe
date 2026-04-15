@@ -10,7 +10,7 @@ export default function Navbar() {
       <header className="top-bar">
         <div className="logo">
           <div className="logo-mark">F</div>
-          <span className="logo-text">FUD</span>
+          <span className="logo-text">Fud</span>
         </div>
 
         <nav className="desktop-nav">

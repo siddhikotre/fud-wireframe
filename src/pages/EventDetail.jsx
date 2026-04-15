@@ -124,7 +124,7 @@ export default function EventDetail() {
             <div className="cta-needs-coins">
               <div className="cta-needs-info">
                 <span className="cta-needs-title">Need {event.coinCost - user.coinBalance} more coins</span>
-                <span className="cta-needs-sub">Buy FUD Coins to register for this workshop</span>
+                <span className="cta-needs-sub">Buy Fud Coins to register for this workshop</span>
               </div>
               <Link to="/wallet" className="cta-buy-btn">
                 Buy Coins <ArrowRight size={16} />
@@ -152,7 +152,7 @@ export default function EventDetail() {
           )}
           {event.coinsEarned > 0 && !isRegistered && !justRegistered && (
             <p className="cta-earn-note">
-              <Coins size={13} /> Earn +{event.coinsEarned} FUD Coins for attending
+              <Coins size={13} /> Earn +{event.coinsEarned} Fud Coins for attending
             </p>
           )}
         </div>
@@ -188,7 +188,7 @@ export default function EventDetail() {
             </div>
             <div className="agent-meta">
               <h2 className="agent-title">
-                Your FUD Agent recommends
+                Your Fud Agent recommends
               </h2>
               <p className="agent-sub">Tools curated for this workshop</p>
             </div>
@@ -226,7 +226,7 @@ export default function EventDetail() {
           </div>
 
           <p className="affiliate-disclosure">
-            FUD may earn a commission on purchases made through these links — at no extra cost to you.
+            Fud may earn a commission on purchases made through these links — at no extra cost to you.
           </p>
         </section>
       )}

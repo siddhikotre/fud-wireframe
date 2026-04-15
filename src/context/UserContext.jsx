@@ -71,7 +71,7 @@ export function UserProvider({ children }) {
       id: `t-${Date.now()}-buy`,
       type: 'purchased',
       amount: pkg.coins,
-      description: `Purchased ${pkg.coins} FUD Coins`,
+      description: `Purchased ${pkg.coins} Fud Coins`,
       date: new Date().toISOString().split('T')[0],
       price: pkg.price,
     };

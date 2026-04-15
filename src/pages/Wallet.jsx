@@ -66,7 +66,7 @@ function CheckoutModal({ pkg, onClose, onSuccess }) {
                 <div className="summary-pkg">
                   <div className="summary-icon"><Coins size={18} /></div>
                   <div>
-                    <div className="summary-name">{pkg.coins.toLocaleString()} FUD Coins</div>
+                    <div className="summary-name">{pkg.coins.toLocaleString()} Fud Coins</div>
                     <div className="summary-rate">${pkg.perCoin.toFixed(3)} per coin</div>
                   </div>
                 </div>
@@ -132,7 +132,7 @@ function CheckoutModal({ pkg, onClose, onSuccess }) {
               <div className="success-check"><Check size={36} strokeWidth={3} /></div>
             </div>
             <h3>Payment successful!</h3>
-            <p className="success-line"><Sparkles size={14} /> {pkg.coins.toLocaleString()} FUD Coins added to your wallet</p>
+            <p className="success-line"><Sparkles size={14} /> {pkg.coins.toLocaleString()} Fud Coins added to your wallet</p>
             <button className="done-btn" onClick={onClose}>Done</button>
           </div>
         )}
@@ -157,7 +157,7 @@ export default function Wallet() {
     <div className="wallet-page">
       <div className="wallet-header animate-in">
         <h1>Wallet</h1>
-        <p>Buy and manage your FUD Coins</p>
+        <p>Buy and manage your Fud Coins</p>
       </div>
 
       {/* Balance hero */}
@@ -175,7 +175,7 @@ export default function Wallet() {
 
       {/* Packages */}
       <section className="wallet-section animate-in" style={{ animationDelay: '120ms' }}>
-        <h2 className="section-title">Buy FUD Coins</h2>
+        <h2 className="section-title">Buy Fud Coins</h2>
         <div className="pkg-grid">
           {coinPackages.map((pkg, i) => (
             <div

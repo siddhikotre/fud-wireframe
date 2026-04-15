@@ -145,7 +145,7 @@ export default function Dashboard() {
               <button className="next-event-cta onboarding-cta" onClick={() => openOnboarding()}>
                 <div className="next-event-info">
                   <span className="next-event-label cta-agent">
-                    <Sparkles size={11} /> FUD Agent
+                    <Sparkles size={11} /> Fud Agent
                   </span>
                   <span className="next-event-title">Complete setup to unlock 1-click apply</span>
                 </div>
@@ -167,7 +167,7 @@ export default function Dashboard() {
 
         {/* Coin balance */}
         <div className="bento-coin">
-          <span className="bento-coin-label">FUD Coin Balance</span>
+          <span className="bento-coin-label">Fud Coin Balance</span>
           <CoinRing value={user.coinBalance} />
           <Link to="/wallet" className="bento-coin-link">
             View wallet <ArrowRight size={13} />

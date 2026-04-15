@@ -88,7 +88,7 @@ export default function Events() {
       {/* Header */}
       <div className="events-header animate-in">
         <h1>Events & Workshops</h1>
-        <p>Discover workshops to grow your business and earn FUD Coins</p>
+        <p>Discover workshops to grow your business and earn Fud Coins</p>
       </div>
 
       {/* Search */}
