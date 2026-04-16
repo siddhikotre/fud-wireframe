@@ -265,10 +265,6 @@
   gap: 6px;
 }
 
-@media (min-width: 768px) {
-  .scroll-nav { display: none; }
-}
-
 .scroll-nav button {
   width: 32px;
   height: 32px;
@@ -604,22 +600,12 @@
 
 .events-scroll::-webkit-scrollbar { display: none; }
 
-@media (min-width: 768px) {
-  .events-scroll {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    overflow: visible;
-    padding: 0;
-    margin: 0;
-  }
-}
-
 .dash-event-card {
   width: calc(100vw - 60px);
   scroll-snap-align: start;
   flex-shrink: 0;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
+  background: var(--brand-purple-50);
+  border: 1px solid var(--brand-purple-100);
   border-radius: var(--radius-lg);
   padding: 22px;
   display: flex;
@@ -630,7 +616,6 @@
 }
 
 @media (min-width: 480px) { .dash-event-card { width: 300px; } }
-@media (min-width: 768px) { .dash-event-card { width: auto; } }
 
 .dash-event-card:hover {
   border-color: var(--brand-purple);
@@ -640,27 +625,48 @@
 
 .dash-event-top {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
+  margin-bottom: 4px;
 }
 
-/* Mono icon box — same treatment for all categories */
-.event-icon-box {
-  width: 42px;
-  height: 42px;
-  border-radius: var(--radius-sm);
+/* Aesthetic date block — big day on left, icon + month stacked on right */
+.dash-event-date {
   display: flex;
   align-items: center;
-  justify-content: center;
-  background: var(--brand-purple-50);
+  gap: 10px;
+  line-height: 1;
   color: var(--brand-purple);
-  transition: all 0.3s var(--ease-spring);
 }
 
-.dash-event-card:hover .event-icon-box {
-  background: var(--brand-purple);
-  color: #FFFFFF;
-  transform: rotate(-3deg);
+.dash-event-date .date-day {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 700;
+  font-size: 48px;
+  letter-spacing: -0.04em;
+  color: var(--brand-purple);
+  line-height: 0.9;
+}
+
+.dash-event-date .date-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.dash-event-date .date-icon {
+  opacity: 0.85;
+}
+
+.dash-event-date .date-month {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brand-purple);
+  opacity: 0.75;
 }
 
 /* ---- Badges ---- */
@@ -689,7 +695,7 @@
 }
 
 .type-badge.paid {
-  background: var(--brand-purple-50);
+  background: var(--bg-card);
   color: var(--brand-purple);
   border: 1px solid var(--brand-purple);
   text-transform: none;
@@ -737,7 +743,7 @@
   font-weight: 500;
   background: transparent;
   color: var(--text-muted);
-  border: 1px solid var(--border);
+  border: 1px solid var(--brand-purple-100);
 }
 
 .dash-event-footer {
@@ -746,7 +752,7 @@
   justify-content: space-between;
   margin-top: auto;
   padding-top: 12px;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--brand-purple-100);
 }
 
 .cat-tag {
@@ -754,7 +760,7 @@
   font-weight: 500;
   padding: 3px 10px;
   border-radius: var(--radius-full);
-  background: var(--bg-elevated);
+  background: var(--bg-card);
   color: var(--text-secondary);
 }
 
@@ -774,7 +780,7 @@
   font-size: 12px;
   font-weight: 700;
   color: var(--brand-purple);
-  background: var(--brand-purple-50);
+  background: var(--bg-card);
   border: 1px solid var(--brand-purple-100);
   padding: 4px 10px;
   border-radius: var(--radius-full);

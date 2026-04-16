@@ -2,21 +2,12 @@ import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Coins, ArrowRight, Clock, Users,
-  Building2, Bot, Megaphone,
-  DollarSign, Scale, Landmark, Star,
+  Building2, Star, Calendar,
   CheckCircle2, Gift, UserPlus, Trophy, ChevronRight, ChevronLeft,
   Video, MapPin, Sparkles
 } from 'lucide-react';
 import { useUser } from '../context/UserContext';
 import { events } from '../data/mockData';
-
-const categoryConfig = {
-  'AI Tools':   { icon: Bot },
-  'Marketing':  { icon: Megaphone },
-  'Finance':    { icon: DollarSign },
-  'Legal':      { icon: Scale },
-  'Operations': { icon: Landmark },
-};
 
 function getActivityIcon(description) {
   if (description.includes('Attended')) return { icon: CheckCircle2 };
@@ -189,13 +180,18 @@ export default function Dashboard() {
         </div>
         <div className="events-scroll" ref={eventsScrollRef}>
           {displayEvents.map(event => {
-            const cat = categoryConfig[event.category] || categoryConfig['AI Tools'];
-            const CatIcon = cat.icon;
+            const d = new Date(event.date);
+            const day = d.toLocaleDateString('en-US', { day: 'numeric' });
+            const month = d.toLocaleDateString('en-US', { month: 'short' }).toUpperCase();
             return (
               <Link to={`/events/${event.id}`} key={event.id} className={`dash-event-card ${event.type}`}>
                 <div className="dash-event-top">
-                  <div className="event-icon-box">
-                    <CatIcon size={20} />
+                  <div className="dash-event-date">
+                    <span className="date-day">{day}</span>
+                    <div className="date-meta">
+                      <Calendar size={14} className="date-icon" />
+                      <span className="date-month">{month}</span>
+                    </div>
                   </div>
                   <div className="event-card-badges">
                     {event.type === 'free' ? (
@@ -207,11 +203,7 @@ export default function Dashboard() {
                 </div>
                 <h3 className="dash-event-title">{event.title}</h3>
                 <div className="dash-event-meta">
-                  <span>
-                    <Clock size={14} />{' '}
-                    {new Date(event.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
-                    {' '}&middot; {event.time}
-                  </span>
+                  <span><Clock size={14} /> {event.time}</span>
                   <span className={`format-tag ${event.format}`}>
                     {event.format === 'virtual' ? <Video size={12} /> : <MapPin size={12} />}
                     {event.format === 'virtual' ? 'Virtual' : event.location}
