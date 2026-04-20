@@ -18,15 +18,13 @@ const categoryConfig = {
 };
 
 const typeFilters = [
-  { key: 'all', label: 'All Events' },
-  { key: 'free', label: 'Free' },
-  { key: 'paid', label: 'Paid' },
+  { key: 'free', label: 'Free', icon: Sparkles, color: '#059669', bg: '#ECFDF5' },
+  { key: 'paid', label: 'Paid', icon: Coins, color: '#7A6FFA', bg: '#F2F0FF' },
 ];
 
 const formatFilters = [
-  { key: 'all', label: 'All Formats' },
-  { key: 'virtual', label: 'Virtual', icon: Video },
-  { key: 'in-person', label: 'In-person', icon: MapPin },
+  { key: 'virtual', label: 'Virtual', icon: Video, color: '#2563EB', bg: '#EFF6FF' },
+  { key: 'in-person', label: 'In-person', icon: MapPin, color: '#DB2777', bg: '#FCE7F3' },
 ];
 
 function ScrollNav({ scrollRef }) {
@@ -108,49 +106,58 @@ export default function Events() {
         )}
       </div>
 
-      {/* Filters */}
+      {/* Filters — single unified scrollable row */}
       <div className="events-filters animate-in" style={{ animationDelay: '120ms' }}>
-        {/* Type filters */}
-        <div className="filter-row">
-          {typeFilters.map(f => (
-            <button
-              key={f.key}
-              className={`filter-chip type-chip ${activeType === f.key ? 'active' : ''}`}
-              onClick={() => setActiveType(f.key)}
-            >
-              {f.label}
-            </button>
-          ))}
-        </div>
-
-        {/* Format filters */}
-        <div className="filter-row">
-          {formatFilters.map(f => {
-            const FIcon = f.icon;
+        <div className="filter-row filter-row--unified" role="toolbar" aria-label="Event filters">
+          {typeFilters.map(f => {
+            const TIcon = f.icon;
+            const isActive = activeType === f.key;
             return (
               <button
                 key={f.key}
-                className={`filter-chip format-chip ${activeFormat === f.key ? 'active' : ''}`}
-                onClick={() => setActiveFormat(f.key)}
+                className={`filter-chip type-chip ${isActive ? 'active' : ''}`}
+                onClick={() => setActiveType(isActive ? 'all' : f.key)}
+                aria-pressed={isActive}
+                style={{ '--chip-color': f.color, '--chip-bg': f.bg }}
+              >
+                {TIcon && <TIcon size={14} />}
+                {f.label}
+              </button>
+            );
+          })}
+
+          <span className="filter-divider" aria-hidden />
+
+          {formatFilters.map(f => {
+            const FIcon = f.icon;
+            const isActive = activeFormat === f.key;
+            return (
+              <button
+                key={f.key}
+                className={`filter-chip format-chip ${isActive ? 'active' : ''}`}
+                onClick={() => setActiveFormat(isActive ? 'all' : f.key)}
+                aria-pressed={isActive}
+                style={{ '--chip-color': f.color, '--chip-bg': f.bg }}
               >
                 {FIcon && <FIcon size={14} />}
                 {f.label}
               </button>
             );
           })}
-        </div>
 
-        {/* Category filter row */}
-        <div className="filter-row category-filters">
-          {categories.map(cat => {
+          <span className="filter-divider" aria-hidden />
+
+          {categories.filter(c => c.name !== 'All').map(cat => {
             const config = categoryConfig[cat.name];
             const Icon = config?.icon;
+            const isActive = activeCategory === cat.name;
             return (
               <button
                 key={cat.name}
-                className={`filter-chip cat-chip ${activeCategory === cat.name ? 'active' : ''}`}
-                onClick={() => setActiveCategory(cat.name)}
-                style={activeCategory === cat.name && config ? {
+                className={`filter-chip cat-chip ${isActive ? 'active' : ''}`}
+                onClick={() => setActiveCategory(isActive ? 'All' : cat.name)}
+                aria-pressed={isActive}
+                style={config ? {
                   '--chip-color': config.color,
                   '--chip-bg': config.bg,
                 } : {}}
@@ -160,13 +167,16 @@ export default function Events() {
               </button>
             );
           })}
-        </div>
 
-        {hasFilters && (
-          <button className="clear-filters" onClick={clearFilters}>
-            <X size={14} /> Clear filters
-          </button>
-        )}
+          {hasFilters && (
+            <>
+              <span className="filter-divider" aria-hidden />
+              <button className="clear-filters" onClick={clearFilters}>
+                <X size={14} /> Clear
+              </button>
+            </>
+          )}
+        </div>
       </div>
 
       {/* Featured strip */}
