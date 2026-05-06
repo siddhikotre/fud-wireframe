@@ -1,41 +1,62 @@
 /* =============================================
-   Fud Design System — Pure Minimal
-   Only monochrome. Typography does the work.
+   Fud Design System
+   Tokens follow Design System.pdf
    ============================================= */
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500&display=swap');
+
 :root {
-  /* Surfaces */
-  --bg-root: #FAFAFA;
-  --bg-card: #FFFFFF;
-  --bg-elevated: #F5F5F5;
-  --bg-inset: #EEEEEE;
-  --bg-hover: #E5E5E5;
+  /* ---------- SURFACES ---------- */
+  --bg-root:     #FAFAFA; /* main app background */
+  --bg-card:     #FFFFFF; /* cards, modals, inputs */
+  --bg-elevated: #F5F5F5; /* hover on cards, subtle section breaks */
+  --bg-inset:    #EEEEEE; /* disabled surfaces, pressed, code blocks */
+  --bg-hover:    #E5E5E5; /* list rows */
 
-  /* Text */
-  --text-primary: #0A0A0A;
-  --text-secondary: #525252;
-  --text-muted: #A3A3A3;
-  --text-inverse: #FFFFFF;
+  /* ---------- TEXT ---------- */
+  --text-primary:   #0A0A0A; /* headings, body */
+  --text-secondary: #525252; /* sub-headings, descriptions, metadata */
+  --text-muted:     #A3A3A3; /* placeholders, disabled labels (≥18px) */
+  --text-inverse:   #FFFFFF; /* text on dark/brand surfaces */
 
-  /* Borders */
-  --border:        #E5E5E5;
+  /* ---------- BORDERS ---------- */
+  --border:        #E6E4EC;  /* brand ink-100 — dividers and outlines */
   --border-hover:  #D4D4D4;
   --border-strong: #0A0A0A;
 
-  /* Brand — official fud purple */
-  --brand-purple:        #7A6FFA;
-  --brand-purple-hover:  #5D50E0;
-  --brand-purple-50:     #F2F0FF;
-  --brand-purple-100:    #E3DFFF;
+  /* ---------- BRAND PRIMARY (purple) ---------- */
+  --brand-purple:        #7A6FFA; /* primary buttons, links, active */
+  --brand-purple-hover:  #5D50E0; /* hover/pressed deepening */
+  --brand-purple-50:     #F2F0FF; /* focus rings, selected row tint */
+  --brand-purple-100:    #E3DFFF; /* pill backgrounds */
 
-  /* Semantic */
+  /* ---------- BRAND INK (secondary) ---------- */
+  --brand-ink-50:  #F2F0FF; /* feature card backgrounds */
+  --brand-ink-100: #E6E4EC; /* dividers and outlines */
+  --brand-ink:     #1C1B1F; /* secondary CTA */
+  --brand-ink-hover: #0A0A0A;
+
+  /* ---------- BRAND TERTIARY (gold) ---------- */
+  --brand-gold:       #F5A623; /* milestone badges, celebration accents */
+  --brand-gold-hover: #C77F0D;
+
+  /* ---------- SEMANTIC ---------- */
+  --success: #059669;
+  --warning: #D69449;
+  --error:   #991B1B;
+  --info:    #2563EB;
+
+  /* Aliases */
   --primary:        var(--brand-purple);
   --primary-hover:  var(--brand-purple-hover);
   --primary-subtle: var(--brand-purple-50);
-  --danger:         #991B1B;
-  --danger-bg:      #F5F5F5;
+  --danger:         var(--error);
+  --danger-bg:      #FEF2F2;
+  --free:        var(--text-primary);
+  --free-bg:     var(--bg-elevated);
+  --free-border: var(--border);
 
-  /* Aliases for legacy rules */
+  /* Legacy accent aliases (kept for unrelated pages) */
   --accent:        var(--text-primary);
   --accent-50:     var(--bg-elevated);
   --accent-100:    var(--bg-inset);
@@ -47,37 +68,72 @@
   --accent-700:    var(--text-primary);
   --accent-subtle: var(--bg-elevated);
 
-  /* Free state — minimal */
-  --free:        var(--text-primary);
-  --free-bg:     var(--bg-elevated);
-  --free-border: var(--border);
-
-  /* Shadows — nearly invisible */
+  /* ---------- SHADOWS ---------- */
   --shadow-xs: 0 1px 1px rgba(10, 10, 10, 0.03);
   --shadow-sm: 0 1px 3px rgba(10, 10, 10, 0.05);
   --shadow-md: 0 4px 12px rgba(10, 10, 10, 0.06);
   --shadow-lg: 0 12px 24px -4px rgba(10, 10, 10, 0.08);
 
-  /* Radii */
+  /* ---------- CORNER RADII (per design system) ---------- */
+  --radius-button: 8px;   /* buttons, inputs, dropdowns/menus */
+  --radius-card:   12px;  /* cards, modals, dialogs (mobile) */
+  --radius-card-lg: 16px; /* cards, modals (desktop) */
+  --radius-pill:   999px; /* pills, avatars, FABs */
+
+  /* Legacy radius aliases */
   --radius-xs: 4px;
   --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 14px;
-  --radius-xl: 18px;
-  --radius-full: 9999px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 999px;
 
-  /* Typography — single font, Geist, tight and clean */
-  --font-body:    'Geist', system-ui, -apple-system, sans-serif;
-  --font-display: 'Geist', system-ui, -apple-system, sans-serif;
-  --font-serif:   'Geist', system-ui, -apple-system, sans-serif;
+  /* ---------- SPACING SCALE (mobile / desktop pairs from PDF) ---------- */
+  --space-1:  8px;   /* pills, chips, tags, small badges */
+  --space-2:  12px;  /* button vertical, input vertical */
+  --space-3:  14px;  /* input horizontal mobile (16 desktop) */
+  --space-4:  16px;  /* card padding mobile (24 desktop) */
+  --space-5:  20px;  /* form vertical, modal padding */
+  --space-6:  24px;  /* card padding desktop, list rows desktop */
+  --space-7:  28px;  /* between body and next section (desktop) */
+  --space-8:  32px;  /* form section gap, between sections (mobile min) */
+  --space-9:  40px;  /* between sections */
+  --space-10: 48px;  /* desktop section gap */
+  --space-12: 64px;  /* hero / major block */
 
-  /* Easing */
+  /* Responsive paired spacing — switches at 768px */
+  --pad-card:    var(--space-4); /* 16 / 24 */
+  --pad-input-x: var(--space-3); /* 14 / 16 */
+  --pad-input-y: var(--space-2); /* 12 / 12 */
+  --gap-grid:    var(--space-4); /* 16 / 24 */
+  --gap-section: var(--space-9); /* 40 / 48 */
+  --gap-form:    var(--space-5); /* 20 / 28 */
+  --pad-page-x:  var(--space-4); /* 16 / 24 */
+
+  /* ---------- TYPOGRAPHY ---------- */
+  --font-display: 'Montserrat', system-ui, -apple-system, sans-serif;
+  --font-body:    'Inter', system-ui, -apple-system, sans-serif;
+  --font-ai:      'Space Grotesk', 'Inter', system-ui, sans-serif;
+  --font-serif:   'Inter', system-ui, sans-serif; /* legacy alias */
+
+  /* Type scale — mobile */
+  --fs-h1: 32px;       --lh-h1: 1.15;
+  --fs-h2: 24px;       --lh-h2: 1.2;
+  --fs-h3: 20px;       --lh-h3: 1.25;
+  --fs-h4: 18px;       --lh-h4: 1.3;
+  --fs-body-md: 16px;  --lh-body-md: 1.55; /* body / medium */
+  --fs-body:    16px;  --lh-body:    1.6;  /* body / regular */
+  --fs-caption: 14px;  --lh-caption: 1.45;
+  --fs-button:  14px;
+  --fs-ai:      14px;
+
+  /* ---------- EASING ---------- */
   --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
   --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 
   font-family: var(--font-body);
-  font-size: 17px;
+  font-size: 16px;
   line-height: 1.55;
   color: var(--text-secondary);
   background: var(--bg-root);
@@ -85,6 +141,28 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Desktop type scale + paired spacing */
+@media (min-width: 768px) {
+  :root {
+    --fs-h1: 48px;
+    --fs-h2: 32px;
+    --fs-h3: 28px;
+    --fs-h4: 24px;
+    --fs-body-md: 20px;
+    --fs-body: 18px;
+    --fs-caption: 16px;
+    --fs-button: 16px;
+    --fs-ai: 16px;
+
+    --pad-card:    var(--space-6); /* 24 */
+    --pad-input-x: var(--space-4); /* 16 */
+    --gap-grid:    var(--space-6); /* 24 */
+    --gap-section: var(--space-10);/* 48 */
+    --gap-form:    var(--space-7); /* 28 */
+    --pad-page-x:  var(--space-6); /* 24 */
+  }
 }
 
 *, *::before, *::after {
@@ -111,40 +189,52 @@ button {
 ul, ol { list-style: none; }
 img { max-width: 100%; display: block; }
 
-/* ---- Typography ---- */
+/* ---- Typography per Design System ----
+   H1: Montserrat Bold        48 / 32
+   H2: Montserrat Bold        32 / 24
+   H3: Montserrat Semi-Bold   28 / 20
+   H4: Montserrat Medium      24 / 18
+   Body MD: Inter Medium      20 / 16
+   Body:    Inter Regular     18 / 16
+   Caption: Inter Regular     16 / 14
+   Button/Nav: Inter SemiBold 16 / 14
+   AI in/out: Space Grotesk   16 / 14
+*/
 h1, h2, h3, h4 {
   font-family: var(--font-display);
   color: var(--text-primary);
-  line-height: 1.2;
-  letter-spacing: -0.028em;
+  letter-spacing: -0.02em;
 }
 
-h1 { font-size: clamp(1.75rem, 5vw, 2.5rem); font-weight: 700; }
-h2 { font-size: clamp(1.05rem, 2.8vw, 1.25rem); font-weight: 600; }
-h3 { font-size: 1rem; font-weight: 600; }
+h1 { font-size: var(--fs-h1); line-height: var(--lh-h1); font-weight: 700; letter-spacing: -0.03em; }
+h2 { font-size: var(--fs-h2); line-height: var(--lh-h2); font-weight: 700; }
+h3 { font-size: var(--fs-h3); line-height: var(--lh-h3); font-weight: 600; }
+h4 { font-size: var(--fs-h4); line-height: var(--lh-h4); font-weight: 500; }
 
-p { color: var(--text-secondary); font-size: 1rem; }
-
-.serif {
-  font-family: var(--font-serif);
-  font-weight: 400;
-  letter-spacing: -0.01em;
+p {
+  color: var(--text-secondary);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
 }
 
-.serif-italic {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 400;
-}
+.serif { font-family: var(--font-body); font-weight: 400; letter-spacing: -0.005em; }
+.serif-italic { font-family: var(--font-body); font-style: italic; font-weight: 400; }
 
 .eyebrow {
   display: inline-block;
   font-family: var(--font-body);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   color: var(--text-muted);
   letter-spacing: 0.14em;
   text-transform: uppercase;
+}
+
+/* AI input/output style */
+.ai-text {
+  font-family: var(--font-ai);
+  font-size: var(--fs-ai);
+  line-height: 1.5;
 }
 
 /* ---- Animations ---- */
@@ -178,6 +268,6 @@ p { color: var(--text-secondary); font-size: 1rem; }
 /* ---- Scrollbar ---- */
 ::-webkit-scrollbar { width: 5px; height: 5px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(--border-hover); border-radius: var(--radius-full); }
+::-webkit-scrollbar-thumb { background: var(--border-hover); border-radius: var(--radius-pill); }
 
 ::selection { background: var(--brand-purple); color: var(--text-inverse); }

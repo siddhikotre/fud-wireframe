@@ -37,6 +37,14 @@ export const events = [
     maxAttendees: 100,
     tags: ["beginner", "marketing", "ai"],
     featured: true,
+    image: "https://picsum.photos/seed/fud-evt-1/800/450",
+    audience: "Solopreneurs and first-time founders",
+    learnings: [
+      "Build a customer-finding workflow with ChatGPT in under an hour",
+      "Use Canva AI to design ads that convert (no design skills needed)",
+      "Set up free automation that nurtures leads while you sleep",
+      "Spot the 3 mistakes most first-time founders make on social",
+    ],
     affiliates: [
       { name: "Jasper AI", description: "AI copywriting that sounds like you \u2014 write emails, ads, and social posts in minutes.", link: "#", discount: "20% off first 3 months", logo: "\u270D\uFE0F" },
       { name: "Canva Pro", description: "Design like a pro without hiring one. Templates for every business need.", link: "#", discount: "Free 30-day trial", logo: "\u{1F3A8}" },
@@ -60,6 +68,14 @@ export const events = [
     maxAttendees: 50,
     tags: ["finance", "taxes", "intermediate"],
     featured: false,
+    image: "https://picsum.photos/seed/fud-evt-2/800/450",
+    audience: "LLC owners and freelancers earning $30K+/year",
+    learnings: [
+      "Find the deductions most CPAs forget to ask about",
+      "Choose between Sole Prop, LLC, and S-Corp based on your numbers",
+      "Build a quarterly-tax routine that prevents April panic",
+      "Set up a home-office deduction the IRS won't flag",
+    ],
     affiliates: [
       { name: "QuickBooks", description: "Simple bookkeeping that does the math so you don't have to.", link: "#", discount: "50% off for 3 months", logo: "\u{1F4CA}" },
     ],
@@ -82,6 +98,14 @@ export const events = [
     maxAttendees: 100,
     tags: ["marketing", "social-media", "beginner"],
     featured: false,
+    image: "https://picsum.photos/seed/fud-evt-3/800/450",
+    audience: "Service businesses with 0-5K followers",
+    learnings: [
+      "Define your brand voice in 30 minutes (with a free template)",
+      "Pick the 1 social platform that actually fits your business",
+      "Write posts that convert followers into customers",
+      "Build a 30-day content calendar you'll actually stick to",
+    ],
     affiliates: [
       { name: "Later", description: "Schedule and auto-publish your social content across every platform.", link: "#", discount: "14-day free trial", logo: "\u{1F4C5}" },
     ],
@@ -104,6 +128,14 @@ export const events = [
     maxAttendees: 60,
     tags: ["legal", "beginner", "structure"],
     featured: false,
+    image: "https://picsum.photos/seed/fud-evt-4/800/450",
+    audience: "Founders deciding their first business structure",
+    learnings: [
+      "Compare LLC, Sole Prop, and S-Corp side-by-side for taxes",
+      "Understand personal liability and when it really matters",
+      "Walk through filing your LLC step-by-step (in any state)",
+      "Avoid the 5 most common mistakes new owners make",
+    ],
     affiliates: [
       { name: "LegalZoom", description: "Form your LLC online in minutes. Affordable legal help for small business.", link: "#", discount: "$50 off LLC formation", logo: "\u{1F4DD}" },
     ],
@@ -126,6 +158,14 @@ export const events = [
     maxAttendees: 40,
     tags: ["ai", "automation", "intermediate"],
     featured: true,
+    image: "https://picsum.photos/seed/fud-evt-5/800/450",
+    audience: "Owners juggling 5+ tools or doing repetitive admin work",
+    learnings: [
+      "Map the manual work you can offload in week 1",
+      "Build your first Zap that auto-invoices new clients",
+      "Use AI to draft follow-up emails from your inbox",
+      "Connect your CRM, calendar, and accounting in one flow",
+    ],
     affiliates: [
       { name: "Zapier", description: "Connect 5,000+ apps and automate your workflows without code.", link: "#", discount: "20% off first year", logo: "\u26A1" },
       { name: "Make", description: "Visual automation for people who want more control over their workflows.", link: "#", discount: "Free plan available", logo: "\u{1F527}" },
@@ -149,6 +189,14 @@ export const events = [
     maxAttendees: 80,
     tags: ["finance", "pricing", "beginner"],
     featured: false,
+    image: "https://picsum.photos/seed/fud-evt-6/800/450",
+    audience: "Service providers and freelancers undercharging today",
+    learnings: [
+      "Calculate your true cost-per-hour (most owners get this wrong)",
+      "Use the value-anchor framework to justify higher prices",
+      "Script the conversation when raising rates with existing clients",
+      "Build pricing tiers that move customers up the ladder",
+    ],
     affiliates: [
       { name: "Stripe", description: "Accept payments online and in person. Built for businesses of every size.", link: "#", discount: "No setup fees", logo: "\u{1F4B3}" },
     ],
@@ -171,6 +219,14 @@ export const events = [
     maxAttendees: 50,
     tags: ["marketing", "email", "intermediate"],
     featured: false,
+    image: "https://picsum.photos/seed/fud-evt-7/800/450",
+    audience: "Owners with 100+ subscribers who aren't seeing sales",
+    learnings: [
+      "Write subject lines proven to lift open rates by 30%+",
+      "Build a 5-email welcome sequence that converts",
+      "Segment your list so you stop spamming the wrong people",
+      "Test, iterate, and double your click-through in 30 days",
+    ],
     affiliates: [
       { name: "ConvertKit", description: "Email marketing built for creators and small business owners.", link: "#", discount: "Free up to 1,000 subscribers", logo: "\u{1F4EC}" },
     ],
@@ -193,6 +249,14 @@ export const events = [
     maxAttendees: 30,
     tags: ["operations", "government", "advanced"],
     featured: true,
+    image: "https://picsum.photos/seed/fud-evt-8/800/450",
+    audience: "Established small businesses ready to scale revenue",
+    learnings: [
+      "Get your SAM.gov registration done correctly the first time",
+      "Find contracts you actually qualify for (the easy way)",
+      "Write proposals that beat bigger, more experienced competitors",
+      "Price your bid so you win — and still make a profit",
+    ],
     affiliates: [
       { name: "SAM.gov Registration Help", description: "Get your SAM registration done right the first time.", link: "#", discount: "Free consultation", logo: "\u{1F3DB}\uFE0F" },
     ],
