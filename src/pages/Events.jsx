@@ -57,6 +57,15 @@ function bucketFor(dateStr) {
   return { key: 'later', label: 'Later' };
 }
 
+function dateParts(dateStr) {
+  const d = new Date(dateStr);
+  return {
+    day: d.getDate(),
+    weekday: d.toLocaleDateString('en-US', { weekday: 'short' }).toUpperCase(),
+    month: d.toLocaleDateString('en-US', { month: 'short' }).toUpperCase(),
+  };
+}
+
 function eventLevel(event) {
   const tags = event.tags || [];
   if (tags.includes('advanced'))     return 'advanced';
@@ -234,7 +243,7 @@ function EventCard({ event, isRegistered }) {
   const cat = categoryConfig[event.category] || categoryConfig['AI Tools'];
   const CatIcon = cat.icon;
   const capacity = getCapacity(event);
-  const dateLabel = new Date(event.date).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+  const dp = dateParts(event.date);
   return (
     <Link to={`/events/${event.id}`} key={event.id} className={`event-card ${event.type} ${isRegistered ? 'is-registered' : ''}`}>
       <div className="event-card-image">
@@ -261,18 +270,26 @@ function EventCard({ event, isRegistered }) {
       </div>
 
       <div className="event-card-body">
-        <div className="event-card-datestrip">
-          <span className="event-card-when">
-            <Clock size={13} strokeWidth={2.2} />
-            {dateLabel} &middot; {event.time}
-          </span>
-          <span className={`format-tag ${event.format}`}>
-            {event.format === 'virtual' ? <Video size={12} /> : <MapPin size={12} />}
-            {event.format === 'virtual' ? 'Virtual' : event.location}
-          </span>
+        <div className="event-card-head">
+          <div className="event-card-datetile" style={{ '--tile-accent': cat.color }}>
+            <span className="datetile-month">{dp.month}</span>
+            <span className="datetile-day">{dp.day}</span>
+            <span className="datetile-weekday">{dp.weekday}</span>
+          </div>
+          <div className="event-card-headtext">
+            <h3 className="event-card-title">{event.title}</h3>
+            <div className="event-card-meta-row">
+              <span className="meta-time">
+                <Clock size={12} strokeWidth={2.2} />
+                {event.time}
+              </span>
+              <span className={`format-tag ${event.format}`}>
+                {event.format === 'virtual' ? <Video size={12} /> : <MapPin size={12} />}
+                {event.format === 'virtual' ? 'Virtual' : event.location}
+              </span>
+            </div>
+          </div>
         </div>
-
-        <h3 className="event-card-title">{event.title}</h3>
 
         {event.description && (
           <p className="event-card-desc">{event.description}</p>
@@ -601,6 +618,7 @@ export default function Events() {
               const CatIcon = cat.icon;
               const isRegistered = registeredEvents.includes(event.id);
               const capacity = getCapacity(event);
+              const dp = dateParts(event.date);
               return (
                 <Link to={`/events/${event.id}`} key={event.id} className="featured-card">
                   <div className="featured-image">
@@ -626,13 +644,22 @@ export default function Events() {
                     </div>
                   </div>
                   <div className="featured-content">
-                    <h3 className="featured-title">{event.title}</h3>
-                    <div className="featured-meta">
-                      <span><Clock size={14} /> {new Date(event.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
-                      <span className={`format-tag ${event.format}`}>
-                        {event.format === 'virtual' ? <Video size={12} /> : <MapPin size={12} />}
-                        {event.format === 'virtual' ? 'Virtual' : event.location}
-                      </span>
+                    <div className="featured-head">
+                      <div className="event-card-datetile featured-datetile" style={{ '--tile-accent': cat.color }}>
+                        <span className="datetile-month">{dp.month}</span>
+                        <span className="datetile-day">{dp.day}</span>
+                        <span className="datetile-weekday">{dp.weekday}</span>
+                      </div>
+                      <div className="featured-headtext">
+                        <h3 className="featured-title">{event.title}</h3>
+                        <div className="featured-meta">
+                          <span><Clock size={13} /> {event.time}</span>
+                          <span className={`format-tag ${event.format}`}>
+                            {event.format === 'virtual' ? <Video size={12} /> : <MapPin size={12} />}
+                            {event.format === 'virtual' ? 'Virtual' : event.location}
+                          </span>
+                        </div>
+                      </div>
                     </div>
                     <div className="featured-footer">
                       <div className="host-info">
